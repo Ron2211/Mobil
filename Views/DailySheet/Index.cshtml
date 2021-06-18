@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Mobil.Models.DailySheet>
+@using Mobil.Enum
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<br />
+<div class="table-auto">
+    <table class="table table-responsive">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TLS_Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TD_Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalHotFood)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total_efpost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SafeDrop)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalSale)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TLS_Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TD_Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHotFood)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_efpost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafeDrop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalSale)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+        </td>
+        <td>
+            <a href="@Url.Action("ExportToExcel","DailySheet", new { id = item.ID })">Download Excel</a>
+        </td>
+    </tr>
+        }
+    </table>
+   </div>
+

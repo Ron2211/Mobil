@@ -1,0 +1,560 @@
+﻿@model Mobil.Models.DailySheet
+@using Mobil.Enum
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Mobil Five Ways Servo, Tumut NSW-2720 </h5>
+@using (Html.BeginForm())
+{
+
+    <br>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-1" })
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "col-md-1" } })
+
+        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "col-md-1" })
+        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "col-md-1", id = "currentDate" } })
+
+        @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "col-md-1" })
+        @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "col-md-1", id = "currentTime" } })
+
+        @Html.LabelFor(model => model.Day, htmlAttributes: new { @class = "col-md-1" })
+        @Html.EditorFor(model => model.Day, new { htmlAttributes = new { @class = "col-md-2", id = "displayDateTime" } })
+
+    </div>
+    <br />
+
+    <h4>Tank dips details</h4>
+    <div class="table-auto">
+        <table class="table table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        <label for="fname">Dips:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Tank Capacity:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Water Test:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Dips:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Final Dips:</label>
+                    </th>
+
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Tank_one_dip)
+                </td>
+                <td>
+                    <label for="fname">4300</label>
+                </td>
+                <td>
+                    <label for="fname">YES-NO</label>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank1)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank_one_dip)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Tank_two_dip)
+                </td>
+                <td>
+                    <label for="fname">26000</label>
+                </td>
+                <td>
+                    <label for="fname">YES-NO</label>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank2)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank_two_dip)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Tank_three_dip)
+                </td>
+                <td>
+                    <label for="fname">4300</label>
+                </td>
+                <td>
+                    <label for="fname">YES-NO</label>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank3)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank_three_dip)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Tank_four_dip)
+                </td>
+                <td>
+                    <label for="fname">4300</label>
+                </td>
+                <td>
+                    <label for="fname">YES-NO</label>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank4)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank_four_dip)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Tank_five_dip)
+                </td>
+                <td>
+                    <label for="fname">4300</label>
+                </td>
+                <td>
+                    <label for="fname">YES-NO</label>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank5)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank_five_dip)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Tank_six_dip)
+                </td>
+                <td>
+                    <label for="fname">1000</label>
+                </td>
+                <td>
+                    <label for="fname">YES-NO</label>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank6)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Tank_six_dip)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <h4>Today Fuel details</h4>
+    <div class="table-auto">
+        <table class="table table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        <label for="fname">Fuel type:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Today fuel price:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Total liters sold:</label>
+                    </th>
+                    <th>
+                        <label for="fname">Total dollar:</label>
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.TF_price_e10)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TF_price_e10)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TLS_e10, new { htmlAttributes = new { id = "tankle10", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TD_e10, new { htmlAttributes = new { id = "tankde10", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.TF_price_91)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TF_price_91)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TLS_91, new { htmlAttributes = new { id = "tankl91", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TD_91, new { htmlAttributes = new { id = "tankd91", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.TF_price_98)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TF_price_98)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TLS_98, new { htmlAttributes = new { id = "tankl98", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TD_98, new { htmlAttributes = new { id = "tankd98", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.TF_price_Diesel)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TF_price_Diesel)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TLS_Diesel, new { htmlAttributes = new { id = "tankldiesel", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TD_Diesel, new { htmlAttributes = new { id = "tankddiesel", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="fname"> Total </label>
+                </td>
+                <td>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TLS_Total, new { htmlAttributes = new { id = "tankl" } })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TD_Total, new { htmlAttributes = new { id = "tankd", onkeyup = "sum()" } })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <h4>Food details</h4>
+    <div class="table-auto">
+        <table class="table table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.HotFood)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.HotFood, new { htmlAttributes = new { id = "hotfood", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Pai)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Pai, new { htmlAttributes = new { id = "pai", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.ColdFood)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.ColdFood, new { htmlAttributes = new { id = "coldfood", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Coffee)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Coffee, new { htmlAttributes = new { id = "coffee", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.TotalHotFood)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TotalHotFood, new { htmlAttributes = new { id = "totalfood" } })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <h4>End shift</h4>
+    <div class="table-auto">
+        <table class="table table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Total_efpost)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Total_efpost, new { htmlAttributes = new { id = "totalefpost", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.TotalSale)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TotalSale, new { htmlAttributes = new { id = "totalsale", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.E_efpost)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.E_efpost, new { htmlAttributes = new { id = "eefpost", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.Shopsale)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Shopsale, new { htmlAttributes = new { id = "shopsale" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.MotorPass)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.MotorPass, new { htmlAttributes = new { id = "motorpass", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.Cigartte)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Cigartte)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.MotorCharge)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.MotorCharge, new { htmlAttributes = new { id = "motorcharge", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.E_pay)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.E_pay, new { htmlAttributes = new { id = "epay", onkeyup = "sum()" } })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.FleetCard)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.FleetCard, new { htmlAttributes = new { id = "fleetcard", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.Refund)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Refund)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.SafeDrop)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SafeDrop, new { htmlAttributes = new { id = "safedrop", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.MISC)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.MISC)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.CashPaidout)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CashPaidout, new { htmlAttributes = new { id = "cashpaidout", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.ATMFilled)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.ATMFilled)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Accounts)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Accounts, new { htmlAttributes = new { id = "accounts", onkeyup = "sum()" } })
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Total)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { id = "total", onkeyup = "sum()" } })
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.Diffrence)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Diffrence, new { htmlAttributes = new { id = "diffrence" } })
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <input type="submit" onclick=" return CheckData();" value="Create" class="btn btn-primary" />
+    <br />
+
+}
+
+<script>
+    var today = new Date();
+    var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes();
+    document.getElementById("currentDate").value = date;
+    document.getElementById("currentTime").value = time;
+
+</script>
+<script>
+    var today = new Date();
+    var day = today.getDay();
+    var daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
+    document.getElementById("displayDateTime").value = daylist[day];
+</script>
+<script>
+    function CheckData() {
+        var T1 = $("#Tank1").val();
+        var T11 = $("#Tank_one_dip").val();
+        var T2 = $("#Tank2").val();
+        var T22 = $("#Tank_two_dip").val();
+        var T3 = $("#Tank3").val();
+        var T33 = $("#Tank_tree_dip").val();
+        var T4 = $("#Tank4").val();
+        var T44 = $("#Tank_four_dip").val();
+        var T5 = $("#Tank5").val();
+        var T55 = $("#Tank_five_dip").val();
+        var T6 = $("#Tank6").val();
+        var T66 = $("#Tank_six_dip").val();
+        if (T1 != "" && T11 != "") {
+            if (T1 > T11) {
+                alert("Tank 1 Dip is not matched");
+                return false;
+            }
+        }
+        else if (T2 != "" && T22 != "") {
+            if (T2 > T22) {
+                alert("Tank 2 Dip is not matched");
+                return false;
+            }
+        }
+        else if (T3 != "" && T33 != "") {
+            if (T3 > T33) {
+                alert("Tank 3 Dip is not matched");
+                return false;
+            }
+        }
+        else if (T4 != "" && T44 != "") {
+            if (T4 > T44) {
+                alert("Tank 4 Dip is not matched");
+                return false;
+            }
+        }
+        else if (T5 != "" && T55 != "") {
+            if (T5 > T55) {
+                alert("Tank 5 Dip is not matched");
+                return false;
+            }
+        }
+        else if (T6 != "" && T66 != "") {
+            if (T6 > T66) {
+                alert("Tank 6 Dip is not matched");
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function sum() {
+        var txtFirstNo = document.getElementById('tankle10').value;
+        var txtSecondNo = document.getElementById('tankl91').value;
+        var txtthirdNo = document.getElementById('tankl98').value;
+        var txtfourNo = document.getElementById('tankldiesel').value;
+        var result = parseFloat(txtFirstNo) + parseFloat(txtSecondNo) + parseFloat(txtthirdNo) + parseFloat(txtfourNo);
+        if (!isNaN(result)) {
+            document.getElementById('tankl').value = result;
+        }
+        var txtFirst = document.getElementById('tankde10').value;
+        var txtSecond = document.getElementById('tankd91').value;
+        var txtthird = document.getElementById('tankd98').value;
+        var txtfour = document.getElementById('tankddiesel').value;
+        var result = parseFloat(txtFirst) + parseFloat(txtSecond) + parseFloat(txtthird) + parseFloat(txtfour);
+        if (!isNaN(result)) {
+            document.getElementById('tankd').value = result;
+        }
+        var First = document.getElementById('hotfood').value;
+        var Second = document.getElementById('pai').value;
+        var third = document.getElementById('coldfood').value;
+        var four = document.getElementById('coffee').value;
+        var result = parseFloat(First) + parseFloat(Second) + parseFloat(third) + parseFloat(four);
+        if (!isNaN(result)) {
+            document.getElementById('totalfood').value = result;
+        }
+
+        var totalefpost1 = document.getElementById('totalefpost').value;
+        var eefpost1 = document.getElementById('eefpost').value;
+        var motorpass1 = document.getElementById('motorpass').value;
+        var motorcharge1 = document.getElementById('motorcharge').value;
+        var fleetcard1 = document.getElementById('fleetcard').value;
+        var safedrop1 = document.getElementById('safedrop').value;
+        var cashpaidout1 = document.getElementById('cashpaidout').value;
+        var accounts1 = document.getElementById('accounts').value;
+        var result = parseFloat(totalefpost1) + parseFloat(eefpost1) + parseFloat(motorpass1) + parseFloat(motorcharge1) + parseFloat(fleetcard1) + parseFloat(safedrop1) + parseFloat(cashpaidout1) + parseFloat(accounts1);
+        if (!isNaN(result)) {
+            document.getElementById('total').value = result;
+        }
+        var First1 = document.getElementById('totalsale').value;
+        var Second1 = document.getElementById('total').value;
+        var result = parseFloat(First1) - parseFloat(Second1);
+        if (!isNaN(result)) {
+            document.getElementById('diffrence').value = result;
+        }
+        var First11 = document.getElementById('totalsale').value;
+        var Second11 = document.getElementById('tankd').value;
+        var third11 = document.getElementById('epay').value;
+        var result = parseFloat(First11) - parseFloat(Second11) - parseFloat(third11);
+        if (!isNaN(result)) {
+            document.getElementById('shopsale').value = result;
+        }
+    }
+</script>

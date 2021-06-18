@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MobilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_DailySheet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="Day" Type="varchar" MaxLength="50" />
+          <Property Name="Tank_one_dip" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_two_dip" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_three_dip" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_four_dip" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_five_dip" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_six_dip" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TF_price_e10" Type="decimal" Precision="4" Scale="3" />
+          <Property Name="TF_price_91" Type="decimal" Precision="4" Scale="3" />
+          <Property Name="TF_price_98" Type="decimal" Precision="4" Scale="3" />
+          <Property Name="TF_price_Diesel" Type="decimal" Precision="4" Scale="3" />
+          <Property Name="TLS_e10" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_91" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_98" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_Diesel" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TD_e10" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TD_91" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TD_98" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TD_Diesel" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_Total" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TD_Total" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HotFood" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Pai" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ColdFood" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Coffee" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalHotFood" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_efpost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="E_efpost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MotorPass" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MotorCharge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FleetCard" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SafeDrop" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CashPaidout" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Accounts" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalSale" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Shopsale" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cigartte" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="E_pay" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Refund" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MISC" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ATMFilled" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Diffrence" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeID" Type="bigint" />
+          <Property Name="UName" Type="varchar" MaxLength="50" />
+          <Property Name="UPass" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbl_User_tbl_UserType">
+          <End Role="tbl_UserType" Type="Self.tbl_UserType" Multiplicity="0..1" />
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="tbl_User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobilModelStoreContainer">
+          <EntitySet Name="tbl_DailySheet" EntityType="Self.tbl_DailySheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserType" EntityType="Self.tbl_UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_User_tbl_UserType" Association="Self.FK_tbl_User_tbl_UserType">
+            <End Role="tbl_UserType" EntitySet="tbl_UserType" />
+            <End Role="tbl_User" EntitySet="tbl_User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_DailySheet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tank_one_dip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_two_dip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_three_dip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_four_dip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_five_dip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tank_six_dip" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TF_price_e10" Type="Decimal" Precision="4" Scale="3" />
+          <Property Name="TF_price_91" Type="Decimal" Precision="4" Scale="3" />
+          <Property Name="TF_price_98" Type="Decimal" Precision="4" Scale="3" />
+          <Property Name="TF_price_Diesel" Type="Decimal" Precision="4" Scale="3" />
+          <Property Name="TLS_e10" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_91" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_98" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_Diesel" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TD_e10" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TD_91" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TD_98" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TD_Diesel" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TLS_Total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TD_Total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HotFood" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Pai" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ColdFood" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Coffee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalHotFood" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total_efpost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="E_efpost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MotorPass" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MotorCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FleetCard" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SafeDrop" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CashPaidout" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Accounts" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalSale" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Shopsale" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cigartte" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="E_pay" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Refund" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MISC" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ATMFilled" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Diffrence" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeID" Type="Int64" />
+          <Property Name="UName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_UserType" Relationship="Self.FK_tbl_User_tbl_UserType" FromRole="tbl_User" ToRole="tbl_UserType" />
+        </EntityType>
+        <EntityType Name="tbl_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_User_tbl_UserType" FromRole="tbl_UserType" ToRole="tbl_User" />
+        </EntityType>
+        <Association Name="FK_tbl_User_tbl_UserType">
+          <End Role="tbl_UserType" Type="Self.tbl_UserType" Multiplicity="0..1" />
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="tbl_User">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobilEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_DailySheet" EntityType="Self.tbl_DailySheet" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <EntitySet Name="tbl_UserType" EntityType="Self.tbl_UserType" />
+          <AssociationSet Name="FK_tbl_User_tbl_UserType" Association="Self.FK_tbl_User_tbl_UserType">
+            <End Role="tbl_UserType" EntitySet="tbl_UserType" />
+            <End Role="tbl_User" EntitySet="tbl_User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MobilModelStoreContainer" CdmEntityContainer="MobilEntities">
+          <EntitySetMapping Name="tbl_DailySheet">
+            <EntityTypeMapping TypeName="MobilModel.tbl_DailySheet">
+              <MappingFragment StoreEntitySet="tbl_DailySheet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Tank_one_dip" ColumnName="Tank_one_dip" />
+                <ScalarProperty Name="Tank_two_dip" ColumnName="Tank_two_dip" />
+                <ScalarProperty Name="Tank_three_dip" ColumnName="Tank_three_dip" />
+                <ScalarProperty Name="Tank_four_dip" ColumnName="Tank_four_dip" />
+                <ScalarProperty Name="Tank_five_dip" ColumnName="Tank_five_dip" />
+                <ScalarProperty Name="Tank_six_dip" ColumnName="Tank_six_dip" />
+                <ScalarProperty Name="TF_price_e10" ColumnName="TF_price_e10" />
+                <ScalarProperty Name="TF_price_91" ColumnName="TF_price_91" />
+                <ScalarProperty Name="TF_price_98" ColumnName="TF_price_98" />
+                <ScalarProperty Name="TF_price_Diesel" ColumnName="TF_price_Diesel" />
+                <ScalarProperty Name="TLS_e10" ColumnName="TLS_e10" />
+                <ScalarProperty Name="TLS_91" ColumnName="TLS_91" />
+                <ScalarProperty Name="TLS_98" ColumnName="TLS_98" />
+                <ScalarProperty Name="TLS_Diesel" ColumnName="TLS_Diesel" />
+                <ScalarProperty Name="TD_e10" ColumnName="TD_e10" />
+                <ScalarProperty Name="TD_91" ColumnName="TD_91" />
+                <ScalarProperty Name="TD_98" ColumnName="TD_98" />
+                <ScalarProperty Name="TD_Diesel" ColumnName="TD_Diesel" />
+                <ScalarProperty Name="TLS_Total" ColumnName="TLS_Total" />
+                <ScalarProperty Name="TD_Total" ColumnName="TD_Total" />
+                <ScalarProperty Name="HotFood" ColumnName="HotFood" />
+                <ScalarProperty Name="Pai" ColumnName="Pai" />
+                <ScalarProperty Name="ColdFood" ColumnName="ColdFood" />
+                <ScalarProperty Name="Coffee" ColumnName="Coffee" />
+                <ScalarProperty Name="TotalHotFood" ColumnName="TotalHotFood" />
+                <ScalarProperty Name="Total_efpost" ColumnName="Total_efpost" />
+                <ScalarProperty Name="E_efpost" ColumnName="E_efpost" />
+                <ScalarProperty Name="MotorPass" ColumnName="MotorPass" />
+                <ScalarProperty Name="MotorCharge" ColumnName="MotorCharge" />
+                <ScalarProperty Name="FleetCard" ColumnName="FleetCard" />
+                <ScalarProperty Name="SafeDrop" ColumnName="SafeDrop" />
+                <ScalarProperty Name="CashPaidout" ColumnName="CashPaidout" />
+                <ScalarProperty Name="Accounts" ColumnName="Accounts" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TotalSale" ColumnName="TotalSale" />
+                <ScalarProperty Name="Shopsale" ColumnName="Shopsale" />
+                <ScalarProperty Name="Cigartte" ColumnName="Cigartte" />
+                <ScalarProperty Name="E_pay" ColumnName="E_pay" />
+                <ScalarProperty Name="Refund" ColumnName="Refund" />
+                <ScalarProperty Name="MISC" ColumnName="MISC" />
+                <ScalarProperty Name="ATMFilled" ColumnName="ATMFilled" />
+                <ScalarProperty Name="Diffrence" ColumnName="Diffrence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="MobilModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="UPass" ColumnName="UPass" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserType">
+            <EntityTypeMapping TypeName="MobilModel.tbl_UserType">
+              <MappingFragment StoreEntitySet="tbl_UserType">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

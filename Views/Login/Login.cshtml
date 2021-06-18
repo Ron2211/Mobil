@@ -1,0 +1,68 @@
+﻿@model Mobil.Models.DailySheet
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    
+    <div class="container">
+        <h1 style="color: #6d71f6; text-align: center; font-size: 24px; font-weight: 500; margin-top: 102px;"> Five ways, MOBIL</h1>
+        <div class="card card-container" style="margin-top: 24px;">
+            <h1 style="color: #6d71f6; text-align: center; font-size: 24px; font-weight: 500; margin-top: 15px;">Log in to your account</h1>
+            <form id="Form1" runat="server" class="form-signin">
+                <div id="divLogin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <div class="wrap-form-control validate-input m-b-10 " id="divUserName" data-validate="UserName required.">
+                        <p style="color:red;">@ViewBag.CustomMessage</p>
+                    </div>
+                    <div class="wrap-form-control validate-input m-b-10 " id="divUserName" data-validate="UserName required.">
+                        @Html.TextBoxFor(model => model.UName, new { ID = "txtUserName", @class = "form-control", placeholder = "Enter Username", tabIndex = "1" })
+                    </div>
+                    <div class="wrap-form-control validate-input m-b-10 ">
+                        @Html.ValidationMessageFor(model => model.UName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="wrap-form-control validate-input m-b-10" data-validate="Password required" id="divUserPassword" style="margin-top:9px;">
+                        @Html.TextBoxFor(model => model.UPass, new { ID = "txtUserPassword", style = "-webkit-text-security: disc;", @class = "form-control", placeholder = "Password", TabIndex = "2" })
+                    </div>
+                    <div class="wrap-form-control validate-input m-b-10 ">
+                        @Html.ValidationMessageFor(model => model.UPass, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="loginbtn-block">
+                        <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" style="margin-top: 25px;" TabIndex="3" value="Log in" onclick="return CheckLoginValidation();" />
+                    </div>
+                    <br />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+<script>
+    function CheckLoginValidation() {
+        var userName = $('#txtUserName').get(0).value;
+        var password = $('#txtUserPassword').get(0).value;
+
+        if (userName.trim() == '') {
+            alert("Username is required");
+            return false;
+        }
+        else
+            $('#divUserName').removeClass('alert-validate');
+
+        if (password.trim() == '') {
+            alert("Password is required");
+            return false;
+        }
+        else
+            $('#divUserPassword').removeClass('alert-validate');
+        return true;
+    }
+</script>
